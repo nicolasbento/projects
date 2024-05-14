@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Aquecimento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, th, td {
+            border: 1px solid rgb(150,150,150);
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            background-color: rgb(221,221,221);
+            height: 25px;
+        }
+        #userInput {
+            text-align: center;
+            padding: 5px;
+            border-radius: 10px;
+            min-width: 230px;
+        }
+        .center {
+            width: max-content;
+            margin: auto;
+            background-color: rgb(211,211,211);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid hsl(0, 0%, 70%);
+        }
+        .result {
+            background-color: rgb(231,231,231);
+            text-align: center;
+        }
+        .legenda {
+            text-align: center;
+            color: hsl(0, 0%, 20%);
+            font-family: Arial;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+    <input type="text" id="userInput" placeholder="Massa (kg)" oninput="calculateFormulas()">
+    <br><br>
+    <div class="tb">
+    
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <td width="150px" class="legenda" id="a1"><b>Aquecimento 1: </b></td>
+            <td id="result1" class="result" width="50px"></td>
+        </tr>
+        <tr>
+            <td width="150px" class="legenda" id="a2"><b>Aquecimento 2: </b></td>
+            <td id="result2" class="result" width="50px"></td>
+        </tr>
+        <tr>
+            <td width="150px" class="legenda" id="a3"><b>Aquecimento 3: </b></td>
+            <td id="result3" class="result" width="50px"></td>
+        </tr>
+        <tr>
+            <td width="150px" class="legenda" id="a4"><b>Aquecimento 4: </b></td>
+            <td id="result4" class="result" width="50px"></td>
+        </tr>
+    </table>
+    
+    </div>
+    </div>
+
+    <script>
+        function calculateFormulas() {
+            // Get the user input
+            let userInput = parseFloat(document.getElementById("userInput").value);
+
+            // Check if the input is a valid number
+            if (!isNaN(userInput)) {
+                if (userInput >= 10) {
+                // Calculate the three formulas
+                let result1 = ((userInput + 9) * 0.5) - 9;
+                let result2 = ((userInput + 9) * 0.5) - 9;
+                let result3 = ((userInput + 9) * 0.7) - 9;
+                let result4 = ((userInput + 9) * 0.9) - 9;
+
+                result1 = result1.toFixed(0);
+                result2 = result2.toFixed(0);
+                result3 = result3.toFixed(0);
+                result4 = result4.toFixed(0);
+
+                // Display the results
+                document.getElementById("result1").innerHTML = result1 + "kg";
+                document.getElementById("result2").innerHTML = result2 + "kg";
+                document.getElementById("result3").innerHTML = result3 + "kg";
+                document.getElementById("result4").innerHTML = result4 + "kg";
+            }
+            else {
+                document.getElementById("result1").innerHTML = "";
+                document.getElementById("result2").innerHTML = "";
+                document.getElementById("result3").innerHTML = "";
+                document.getElementById("result4").innerHTML = "";
+            }
+            }
+        }
+    </script>
+</body>
+</html>
+
